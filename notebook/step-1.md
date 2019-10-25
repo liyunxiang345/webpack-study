@@ -26,3 +26,5 @@ npm install webpack-dev-server --save-dev
 npm i html-webpack-plugin -D
 
 ```
+* 引入插件html-webpack-plugin
+* plugins配置项是一个数组，可以写入插件，实例化后的插件传两个参数，选择的模版和打包后的bundle.js是否添加hash
