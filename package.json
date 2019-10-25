@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-serve",
     "build": "webpack"
   },
@@ -20,9 +19,16 @@
   },
   "homepage": "https://github.com/liyunxiang345/webpack-study#readme",
   "devDependencies": {
+    "css-loader": "^3.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "has-flag": "^4.0.0"
   }
 }

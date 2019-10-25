@@ -14,7 +14,17 @@ module.exports = {
       hash: true
     })
   ],
-  module: {}, //处理模块，loader都在这里
+  module: {
+    rules: [{
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'] //顺序从右向左
+      },
+      {
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', 'less-loader']
+      }
+    ]
+  }, //处理模块，loader都在这里
   devServer: {}, //开发服务器配置
   mode: 'development', //模式配置， webpack4新增特性，有development/production
 }

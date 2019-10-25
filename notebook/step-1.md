@@ -23,8 +23,19 @@ npm install webpack-dev-server --save-dev
 
 ```
 依赖安装
-npm i html-webpack-plugin -D
+npm install html-webpack-plugin -D
 
 ```
 * 引入插件html-webpack-plugin
 * plugins配置项是一个数组，可以写入插件，实例化后的插件传两个参数，选择的模版和打包后的bundle.js是否添加hash
+
+#### 配置CSS文件(包含less)
+```
+依赖安装
+npm install css-loader style-loader -D
+npm install less less-loader -D
+```
+* css-loader是负责解释require()和import后再解析
+* style-loader是将样式放入 style标签 
+* less-loader则是将less解析为css
+* 配置css的loader时，use的顺序是从右向左 所以顺序应该为["style-loader","css-loader","less-loader"]
