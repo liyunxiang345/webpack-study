@@ -1,8 +1,12 @@
+const path = require("path");
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
-  entry: '', //入口文件
-  output: {}, //出口
+  entry: './src/index.js', //入口文件 (如果多个入口，以entry: { app: './src/app.js', vendor: './src/vendor.js'}这种对象形式形式)
+  output: {
+    path: path.resolve(__dirname, 'dist'), //指定输入目录的绝对路径
+    filename: '[chunkhash].bundle.js'
+  }, //出口
   module: {}, //处理模块，loader都在这里
-  plugin: {}, //强大的插件配置
   devServer: {}, //开发服务器配置
-  mode: '', //模式配置， webpack4新增特性，有development/production
+  mode: 'development', //模式配置， webpack4新增特性，有development/production
 }
