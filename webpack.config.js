@@ -6,6 +6,14 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'), //指定输入目录的绝对路径
     filename: '[chunkhash].bundle.js'
   }, //出口
+  devServer: {
+    inline: true, //打包后生成websocket客户端
+    contentBase: path.resolve(__dirname, 'dist'), //开发服务运行时的文件根目录
+    host: 'localhost', //主机地址
+    port: 8086, //端口号
+    compress: true, //开发服务器是否启动gzip等压缩
+    open: true, // 自动打开浏览器
+  },
   plugins: [
     new HtmlWebpackPlugin({
       // 选择一个html文件作为模板
@@ -25,6 +33,5 @@ module.exports = {
       }
     ]
   }, //处理模块，loader都在这里
-  devServer: {}, //开发服务器配置
   mode: 'development', //模式配置， webpack4新增特性，有development/production
 }
