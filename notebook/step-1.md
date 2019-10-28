@@ -3,6 +3,7 @@
 
 ```
 依赖安装
+
 npm install webpack webpack-cli --save-dev
 npm install webpack-dev-server --save-dev
 
@@ -23,6 +24,7 @@ npm install webpack-dev-server --save-dev
 
 ```
 依赖安装
+
 npm install html-webpack-plugin -D
 
 ```
@@ -32,10 +34,23 @@ npm install html-webpack-plugin -D
 #### 配置CSS文件(包含less)
 ```
 依赖安装
+
 npm install css-loader style-loader -D
 npm install less less-loader -D
+
 ```
 * css-loader是负责解释require()和import后再解析
 * style-loader是将样式放入 style标签 
 * less-loader则是将less解析为css
 * 配置css的loader时，use的顺序是从右向左 所以顺序应该为["style-loader","css-loader","less-loader"]
+
+#### 拆分css
+
+```
+安装依赖
+
+npm install extract-text-webpack-plugin@next -D
+
+```
+* 到目前为止，该插件的稳定版还不支持webpack4.0 ,所以安装他的beta版本
+* 拆分css会让css以文件形式引入，而非直接放入style标签
