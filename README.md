@@ -7,10 +7,6 @@
     #readme >.block{
       margin-bottom: 20px
     }
-    #readme >.block>a::hover{
-      color: red;
-      text-decoration: none
-    }
   </style>
 </header>
 <body>
