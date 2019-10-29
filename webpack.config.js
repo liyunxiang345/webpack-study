@@ -30,6 +30,32 @@ module.exports = {
       {
         test: /\.less$/,
         use: ['style-loader', 'css-loader', 'less-loader']
+      },
+      {
+        test: /\.(jpg|png|jpeg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'static/image/[name].[ext]'
+        }
+      },
+      {
+        test: /\.(jpg|png|jpeg|gif)$/,
+        loader: 'url-loader',
+        options: {
+          //小于8kb转为base64
+          limit: 8192,
+          name: 'static/image/[name].[ext]'
+        }
+      },
+      {
+        test: /\.(html|htm)$/,
+        loader: 'html-withimg-loader'
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: '/src/',
+        exclude: '/node_modules/'
       }
     ]
   }, //处理模块，loader都在这里
