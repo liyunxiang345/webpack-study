@@ -53,4 +53,4 @@ npm install extract-text-webpack-plugin@next -D
 
 ```
 * 到目前为止，该插件的稳定版还不支持webpack4.0 ,所以安装他的beta版本
-* 拆分css会让css以文件形式引入，而非直接放入style标签
+* 拆分css会让css以link标签方式引入，而非直接放入style标签
