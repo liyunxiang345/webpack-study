@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack  = require("webpack")
 module.exports = {
   /*
   * 入口文件 (如果多个入口，以entry: { app: './src/app.js', vendor: './src/vendor.js'}这种对象形式形式)
@@ -15,12 +16,14 @@ module.exports = {
     * */
     path: path.resolve(__dirname, 'dist'),
     publicPath: "./",
-    filename: '[chunkhash].bundle.js'
+    filename: '[name].bundle.js'
   },
   devServer: {
     inline: true, //打包后生成websocket客户端
     contentBase: path.resolve(__dirname, 'dist'), //开发服务运行时的文件根目录
     host: 'localhost', //主机地址
+    hot: true,
+    hotOnly: true,
     port: 8086, //端口号
     compress: true, //开发服务器是否启动gzip等压缩
     open: true, // 自动打开浏览器
@@ -31,12 +34,16 @@ module.exports = {
         test: /\.css$/,
         // 用了
         use: ExtractTextPlugin.extract({
-          use: 'css-loader'
+          use: 'css-loader',
         })
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader'] //顺序从右向左
+        use: ['style-loader', 'css-loader', 'less-loader','postcss-loader'] //顺序从右向左
+      },
+      {
+        test: /\.(sass|scss)$/,
+        use: ['style-loader','css-loader','sass-loader']
       },
       // {
       //   test: /\.(jpg|png|jpeg|gif)$/,
@@ -52,7 +59,8 @@ module.exports = {
         options: {
           //小于指定字节数转为base64
           limit: 30000,
-          name: 'static/image/[name].[ext]'
+          name: '[name]_[hash].[ext]',
+          outputPath: "static/image/"
         }
       },
       {
@@ -70,11 +78,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       // 选择一个html文件作为模板
-      template: './src/index.html',
+      template: path.resolve(__dirname,'index.html'),
       // 在打包好的bundle.js后面添加hash
       hash: true
     }),
-    new ExtractTextPlugin('css/reset.css')
+    new ExtractTextPlugin('css/reset.css'),
+    // new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
     /*
