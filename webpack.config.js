@@ -19,13 +19,14 @@ module.exports = {
     filename: '[name].bundle.js'
   },
   devServer: {
-    inline: true, //打包后生成websocket客户端
+    publicPath: "/",
+    // inline: true, //打包后生成websocket客户端
     contentBase: path.resolve(__dirname, 'dist'), //开发服务运行时的文件根目录
     host: 'localhost', //主机地址
     hot: true,
     hotOnly: true,
     port: 8086, //端口号
-    compress: true, //开发服务器是否启动gzip等压缩
+    // compress: true, //开发服务器是否启动gzip等压缩
     open: true, // 自动打开浏览器
   },
   module: {
@@ -65,7 +66,7 @@ module.exports = {
       },
       {
         test: /\.(html|htm)$/,
-        loader: 'html-withimg-loader'
+        loader: ['html-withimg-loader']
       },
       {
         test: /\.js$/,
@@ -83,7 +84,7 @@ module.exports = {
       hash: true
     }),
     new ExtractTextPlugin('css/reset.css'),
-    // new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
     /*

@@ -38,7 +38,7 @@ npm install html-withimg-loader -D
 * file-loader 可以解析项目中url的引入，根据配置将图片copy到相应的路径，修改打包后文件引入路径,使之指向正确的地方
 * url-loader 是基于file-loader的另一层封装，可以在图片小于limit时使之转为base64，这样可以减少图片http的请求
 * 不仅仅图片，媒体资源和字体文件也可以用这个loader
-* 出了css内和js内引入图片，html文件内使用img标签或者内联样式的background来引入图片，可以使html-withimg-loader来处理这种情况(这个loader在npm两年一直没有更新，而且vue脚手架也没有这个loader)
+* 除了css内和js内引入图片，html文件内使用img标签或者内联样式的background来引入图片，可以使html-withimg-loader来处理这种情况(这个loader在npm两年一直没有更新，而且vue脚手架也没有这个loader)
 
 #### ES6转义
 ```
