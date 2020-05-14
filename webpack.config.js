@@ -73,6 +73,16 @@ module.exports = {
         loader: 'babel-loader',
         include: '/src/',
         exclude: '/node_modules/'
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            css: ExtractTextPlugin.extract({ use: ['css-loader'], fallback: 'vue-style-loader' }),
+            less: ExtractTextPlugin.extract({ use: ['css-loader', 'less-loader'], fallback: 'vue-style-loader' })
+          }
+        }
       }
     ]
   }, //处理模块，loader都在这里
@@ -83,14 +93,14 @@ module.exports = {
       // 在打包好的bundle.js后面添加hash
       hash: true
     }),
-    new ExtractTextPlugin('css/reset.css'),
+    // new ExtractTextPlugin('css/reset.css'),
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
     /*
     * 引入时可省略的后缀名
     * */
-    extensions: ['.js','.css','.less'],
+    extensions: ['.js','.css','.less','.vue'],
     /*
     * 定义别名，方便于引入
     * */
