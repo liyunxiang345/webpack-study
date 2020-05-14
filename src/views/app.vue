@@ -6,20 +6,22 @@
         <div class="text">十二楼五城</div>
         <div class="text">仙人抚我顶</div>
         <div class="text">结发受长生</div>
-        <img class="pugy" src="./src/assets/image/480_380.gif" alt="">
-        <img class="pugy" src="./src/assets/image/lazy.jpg" alt="">
+        <!--<img class="pugy" src="@/src/assets/image/480_380.gif" alt="">-->
+        <!--<img class="pugy" src="@/src/assets/image/lazy.jpg" alt="">-->
         <div>
             <button @click="addImg">添加图片</button>
         </div>
-        <div id="wall">
-            <img v-for="(item,index) in img_list" :key="index" src="item.zyl" class="zhuyilong">
+        <div class="wall">
+            <img v-for="(item,index) in img_list" :key="index" :src="item.zyl" class="zhuyilong">
         </div>
     </div>
 </template>
 <script>
     export default {
-        data:{
-            img_list:[]
+        data(){
+            return {
+                img_list: []
+            }
         },
         methods:{
             addImg(){
@@ -53,17 +55,21 @@
             height: 100px;
             transform: translateX(10px);
         }
-        #wall {
+        .wall {
             &:after{
                 display: block;
                 content: "";
                 clear: both;
             }
-            width: 150px;
-            height: 100px;
-            float: left;
-            margin-left: 10px;
-            margin-bottom: 10px;
+            .zhuyilong{
+                width: 150px;
+                height: 100px;
+                float: left;
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+
+
         }
     }
 </style>

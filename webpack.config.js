@@ -93,7 +93,7 @@ module.exports = {
       // 在打包好的bundle.js后面添加hash
       hash: true
     }),
-    // new ExtractTextPlugin('css/reset.css'),
+    new ExtractTextPlugin('css/[name].[chunkhash].css'),
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
